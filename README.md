@@ -48,6 +48,7 @@ Currently this repository contains configuration files for:
 
 - kitty
 - fastfetch
+- neovim
   > The config list will be expanded further
 
 ## Adding New Dotfiles

@@ -16,6 +16,12 @@ PACMAN_PACKAGES=(
     qbittorrent
     code
     ttf-firacode-nerd
+    python-black
+    clang
+    stylua
+    wl-clipboard
+    nodejs
+    npm
 )
 
 AUR_PACKAGES=(
