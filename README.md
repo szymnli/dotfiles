@@ -51,6 +51,14 @@ $ gh auth login
 ```
 This is required for git to push/pull from GitHub using your `.gitconfig` credential helper. Remember to change your name and email there.
 
+---
+
+To set zsh as your default shell use the following command.
+```
+$ chsh -s $(which zsh)
+```
+Then log out and back in.
+
 ## Dotfiles available
 
 Currently this repository contains configuration files for:
@@ -58,6 +66,7 @@ Currently this repository contains configuration files for:
 - kitty
 - fastfetch
 - neovim
+- zsh
   > The config list will be expanded further
 
 ## Adding New Dotfiles

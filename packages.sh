@@ -12,7 +12,6 @@ PACMAN_PACKAGES=(
     neovim
     curl
     wget
-    zsh
     ranger
     btop
     htop
@@ -28,12 +27,18 @@ PACMAN_PACKAGES=(
     nodejs
     npm
     github-cli
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    eza
+    vivid
 )
 
 AUR_PACKAGES=(
     zen-browser-bin
     spotify
     discord
+    zsh-theme-powerlevel10k
 )
 
 if ! command -v yay &>/dev/null; then
