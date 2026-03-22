@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+if [ "$EUID" -eq 0 ]; then
+    echo "Do not run this script as root"
+    exit 1
+fi
+
 PACMAN_PACKAGES=(
     kitty
     fastfetch
@@ -22,6 +27,7 @@ PACMAN_PACKAGES=(
     wl-clipboard
     nodejs
     npm
+    github-cli
 )
 
 AUR_PACKAGES=(

@@ -1,0 +1,21 @@
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[user] # Change your name and email here
+	name = Szymon Linda
+	email = 65771232+szymnli@users.noreply.github.com
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[core]
+    editor = nvim
+[alias]
+    st = status
+    lg = log --oneline --graph --decorate
+[init]
+	defaultBranch = main

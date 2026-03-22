@@ -34,7 +34,7 @@ link_file() {
         fi
     elif [ -f "$dst" ]; then
         # File exists but is not a symlink
-        echo -e "\033[31m[WARNING]\033[0m $dst already exists as a real file"
+        echo -e "\033[33m[!]\033[0m $dst already exists as a real file"
         if [ "$FORCE" = true ]; then
             mv "$dst" "$dst.backup"
             ln -sf "$src" "$dst"

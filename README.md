@@ -42,6 +42,14 @@ $ ./uninstall.sh
 $ sudo ./packages.sh
 ```
 
+## Post Installation
+
+After running `packages.sh`, authenticate with GitHub CLI:
+```
+$ gh auth login
+```
+This is required for git to push/pull from GitHub using your `.gitconfig` credential helper.
+
 ## Dotfiles available
 
 Currently this repository contains configuration files for:
