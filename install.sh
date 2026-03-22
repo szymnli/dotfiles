@@ -1,33 +1,68 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
+
+FORCE=false
+if [ "$1" = "--force" ]; then
+    FORCE=true
+fi
+
+OK=0
+SKIP=0
+WARN=0
 
 # Get the dotfiles directory (where this script lives)
 DOTFILES_DIR=$(cd "$(dirname "$0")" && pwd)
 
 link_file() {
-    local src=$1    # first argument
-    local dst=$2    # second argument
+    # Dotfiles path
+    local src=$1
+    # Destination path
+    local dst=$2
 
     mkdir -p "$(dirname "$dst")"
 
     if [ -L "$dst" ]; then
         local target=$(readlink "$dst")
         if [ "$target" = "$src" ]; then
-            echo -e "\e[33m[SKIP]\e[0m $dst"
+            # If the symlink already points to the correct file, skip
+            echo -e "\033[33m[SKIP]\033[0m $dst"
+            ((SKIP++)) || true
         else
-            echo -e "\e[31m[WARNING]\e[0m $dst is a symlink pointing to $target"
+            # Symlink exists but points somewhere unexpected
+            echo -e "\033[31m[WARNING]\033[0m $dst is a symlink pointing to $target"
+            ((WARN++)) || true
         fi
     elif [ -f "$dst" ]; then
-        echo -e "\e[31m[WARNING]\e[0m $dst already exists as a real file"
+        # File exists but is not a symlink
+        echo -e "\033[31m[WARNING]\033[0m $dst already exists as a real file"
+        if [ "$FORCE" = true ]; then
+            mv "$dst" "$dst.backup"
+            ln -sf "$src" "$dst"
+            echo -e "\033[33m[BACKUP]\033[0m $dst → $dst.backup"
+            echo -e "\033[32m[OK]\033[0m Linked $dst"
+            ((OK++)) || true
+        else
+            echo -e "\033[31m[WARNING]\033[0m Use --force to overwrite"
+            ((WARN++)) || true
+        fi
     else
+        # Create symlink
         ln -sf "$src" "$dst"
-        echo -e "\e[32m[OK]\e[0m Linked $dst"
+        echo -e "\033[32m[OK]\033[0m Linked $dst"
+        ((OK++)) || true
     fi
 }
 
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
-# Kitty config
-link_file "$DOTFILES_DIR/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+source "$DOTFILES_DIR/files.sh"
+for item in "${FILES[@]}"; do
+    # Extract source and destination paths
+    src=${item%%:*}
+    dst=${item#*:}
+    link_file "$DOTFILES_DIR/$src" "$dst"
+done
 
-echo "Installation finished!"
+echo "Done!"
+echo ""
+echo "Linked: $OK  Skipped: $SKIP  Warnings: $WARN"
