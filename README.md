@@ -57,7 +57,12 @@ Currently this repository contains configuration files for:
 3. Add an entry to `files.sh`:
 
 ```bash
-  "nvim/init.lua:$HOME/.config/nvim/init.lua"
+FILES=(
+    "kitty/kitty.conf:$HOME/.config/kitty/kitty.conf"
+    "fastfetch/config.jsonc:$HOME/.config/fastfetch/config.jsonc"
+    ...
+    "nvim/init.lua:$HOME/.config/nvim/init.lua"  # ← add this
+)
 ```
 
 4. Run `./install.sh`
