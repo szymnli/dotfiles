@@ -37,7 +37,7 @@ $ chmod +x install.sh uninstall.sh packages.sh
 To install, uninstall the dotfiles or install the packages, run their respective scripts. Use flag `--force` if you wish to skip warnings about preexisting configurations being present.
 
 ```
-$ sudo ./packages.sh
+$ ./packages.sh
 $ ./install.sh [--force]
 
 $ ./uninstall.sh
