@@ -15,6 +15,7 @@ PACMAN_PACKAGES=(
     libreoffice-fresh
     qbittorrent
     code
+    ttf-firacode-nerd
 )
 
 AUR_PACKAGES=(
