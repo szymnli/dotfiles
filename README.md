@@ -69,6 +69,10 @@ Currently this repository contains configuration files for:
 - zsh
   > The config list will be expanded further
 
+### Neovim
+
+Custom neovim config using lazy.nvim. See the [cheatsheet](nvim/cheatsheet.md) for all keybindings.
+
 ## Adding New Dotfiles
 
 1. Create a folder named after the program: `mkdir nvim`
