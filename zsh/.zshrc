@@ -16,6 +16,16 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY        # append to history file, don't overwrite
+setopt SHARE_HISTORY         # share history between all sessions
+setopt HIST_IGNORE_DUPS      # don't record duplicate entries
+setopt HIST_IGNORE_SPACE     # don't record commands starting with a space
+setopt HIST_VERIFY           # show command before executing from history
+
 # Aliases
 alias terminal='kitty'
 alias s='TERM=xterm-256color kitten ssh'
