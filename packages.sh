@@ -32,6 +32,8 @@ PACMAN_PACKAGES=(
     zsh-syntax-highlighting
     eza
     vivid
+    vi
+    obsidian
 )
 
 AUR_PACKAGES=(
