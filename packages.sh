@@ -34,6 +34,7 @@ PACMAN_PACKAGES=(
     vivid
     vi
     obsidian
+    thefuck
 )
 
 AUR_PACKAGES=(
